@@ -1,4 +1,5 @@
 interface City {
+  id: string;
   name?: string;
   nameNative?: string;
   country: string;

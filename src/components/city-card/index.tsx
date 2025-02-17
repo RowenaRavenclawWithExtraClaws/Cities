@@ -1,14 +1,29 @@
-import React from "react";
+import React, { useCallback } from "react";
+import { useCities } from "../../hooks/cities";
 
 export const CityCard = ({
+  id,
   name,
   nameNative,
   country,
   population,
   founded,
 }: City) => {
+  const { selectedCity, selectCity } = useCities();
+
+  const getBgColor = useCallback(() => {
+    if (selectedCity?.id === id) {
+      return "bg-blue-200";
+    }
+
+    return "";
+  }, [selectedCity, id]);
+
   return (
-    <div className="bg-grey rounded-xl shadow-lg p-6 max-w-sm mx-auto hover:scale-105 transition-transform duration-300">
+    <div
+      className={`${getBgColor()} rounded-xl shadow-lg p-6 max-w-sm mx-auto hover:scale-105 transition-transform duration-300`}
+      onClick={() => selectCity(id)}
+    >
       <h2 className="text-2xl font-bold mb-4 text-center text-blue-700">
         {name}
       </h2>
