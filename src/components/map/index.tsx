@@ -10,6 +10,7 @@ export const Map = ({ latitude, longitude }: Props) => {
 
   return (
     <MapContainer
+      key={`${latitude}.${latitude}`}
       center={coordinates}
       zoom={13}
       style={{ height: "100vh", width: "100%" }}
