@@ -5,6 +5,8 @@ import {
   useState,
 } from "react";
 
+const API_URL = 'http://localhost:4000/api/cities';
+
 const CitiesContext = createContext<{
   cities: City[];
   selectedCity?: City;
@@ -25,8 +27,11 @@ export const CitiesProvider = ({ children }: { children: ReactNode }) => {
     setSelectedCity(cities.find((city) => city.id === cityId));
   };
 
-  const populateCities = (cities: City[]) => {
-    setCities(cities);
+  const populateCities = async (cities: City[]) => {
+    const response = await fetch(API_URL);
+    const body: JsonApiResponse<City> = await response.json();
+
+    setCities(body.data.map((entry) => entry.attributes));
   }
 
   return (
@@ -38,8 +43,6 @@ export const CitiesProvider = ({ children }: { children: ReactNode }) => {
 
 export const useCities = () => {
   const context = useContext(CitiesContext);
-
-  console.log(context);
 
   return {
     ...context,

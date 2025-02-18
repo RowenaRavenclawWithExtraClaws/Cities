@@ -10,3 +10,11 @@ interface City {
   founded?: number;
   landmarks?: string[];
 }
+
+interface JsonApiResponse<T> {
+  data: {
+    type: string;
+    id: string;
+    attributes: T;
+  }[];
+}
