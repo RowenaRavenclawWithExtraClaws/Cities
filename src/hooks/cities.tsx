@@ -11,11 +11,11 @@ const CitiesContext = createContext<{
   cities: City[];
   selectedCity?: City;
   selectCity: (cityId: string) => void;
-  populateCities: (cities: City[]) => void;
+  populateCities: () => void;
 }>({
   cities: [],
   selectCity: (cityId: string) => {},
-  populateCities: (cities: City[]) => {},
+  populateCities: () => {},
 });
 
 export const CitiesProvider = ({ children }: { children: ReactNode }) => {
@@ -27,7 +27,7 @@ export const CitiesProvider = ({ children }: { children: ReactNode }) => {
     setSelectedCity(cities.find((city) => city.id === cityId));
   };
 
-  const populateCities = async (cities: City[]) => {
+  const populateCities = async () => {
     const response = await fetch(API_URL);
     const body: JsonApiResponse<City> = await response.json();
 

@@ -38,7 +38,13 @@ export const CityCard = ({
         </div>
 
         <div className="bg-yellow-100 text-yellow-900 px-4 py-2 rounded-full text-sm font-medium">
-          👥 {population.toLocaleString()} people
+          👥{" "}
+          {population.toLocaleString("en-US", {
+            maximumFractionDigits: 2,
+            notation: "compact",
+            compactDisplay: "short",
+          })}{" "}
+          people
         </div>
 
         <div className="bg-purple-100 text-purple-900 px-4 py-2 rounded-full text-sm font-medium">

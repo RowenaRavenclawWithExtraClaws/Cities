@@ -4,6 +4,7 @@ interface City {
   nameNative?: string;
   country: string;
   continent?: string;
+  flag: string;
   latitude?: number;
   longitude?: number;
   population: number;
