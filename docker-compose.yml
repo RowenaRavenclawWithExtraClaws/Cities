@@ -1,0 +1,24 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile  # The Node.js Dockerfile
+    ports:
+      - "4000:4000"  # Mapping backend port to the host
+    depends_on:
+      - frontend
+    networks:
+      - app-network
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./frontend/Dockerfile  # The React Dockerfile
+    ports:
+      - "3000:3000"  # Mapping frontend port to the host
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
