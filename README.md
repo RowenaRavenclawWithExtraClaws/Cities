@@ -4,6 +4,8 @@ Cities is a simple web app that allows users to:
 - Learn quick facts about a bunch of cities
 - View citites on the map
 
+<img width="1512" alt="Screenshot 2025-02-20 at 04 49 57" src="https://github.com/user-attachments/assets/e0787837-2675-4ff9-93d4-c13c250b9edc" />
+
 ## Dev setup
 
 ### Docker
